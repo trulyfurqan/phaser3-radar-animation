@@ -14,11 +14,6 @@ window.onload = function() {
 
 class Radar1 extends Phaser.Scene
 {
-    constructor()
-    {
-        super("radar5_1_scene");
-    }
-
     create()
     {
         // Radar Settings
@@ -56,89 +51,14 @@ class Radar1 extends Phaser.Scene
         // Horizontal Line
         this.horizontalLine = this.add.line(0, 0, this.radarX, this.radarY, this.radarX + this.triangleLength * 2 - (this.radarScreenBorderWidth * 2), this.radarY, 0x004400);
 
-
-        // diff_1 = 16.5
-        // diff_2 = 43.5
-
-
-        // ##### this.circleRadius = 50
-        // Dynamic
         // Left Diagonal
         this.leftDiagonal = this.add.line(0, 0, this.radarX, this.radarY, this.radarX + this.triangleLength * 2 - ((this.totalCircles * 1.4) + ((this.circleRadius / 2) / 2) + ((this.circleRadius / 2) * this.totalCircles)) - (this.radarScreenBorderWidth * 2), this.radarY + (((this.circleRadius * 1.5) * this.totalCircles) - ((this.circleRadius / 2) / 2)) - (this.totalCircles * 1.4), 0x004400);
 
         // Right Diagonal
         this.rightDiagonal = this.add.line(0, 0, this.radarX, this.radarY + (((this.circleRadius * 1.5) * this.totalCircles) - ((this.circleRadius / 2) / 2)) - (this.totalCircles * 1.4), this.radarX + this.triangleLength * 2 - ((this.totalCircles * 1.4) + ((this.circleRadius / 2) / 2) + ((this.circleRadius / 2) * this.totalCircles)) - (this.radarScreenBorderWidth * 2), this.radarY, 0x004400);
 
-
-
+        // =====
         
-        /*
-        // ##### this.circleRadius = 50
-        // Dynamic
-        // Left Diagonal
-        this.leftDiagonal = this.add.line(0, 0, this.radarX, this.radarY, this.radarX + this.triangleLength * 2 - (((this.circleRadius / 2) / 2) + ((this.circleRadius / 2) * this.totalCircles)) - (this.radarScreenBorderWidth * 2), this.radarY + (((this.circleRadius * 1.5) * this.totalCircles) - ((this.circleRadius / 2) / 2)), 0x004400);
-
-        // Right Diagonal
-        this.rightDiagonal = this.add.line(0, 0, this.radarX, this.radarY + (((this.circleRadius * 1.5) * this.totalCircles) - ((this.circleRadius / 2) / 2)), this.radarX + this.triangleLength * 2 - (((this.circleRadius / 2) / 2) + ((this.circleRadius / 2) * this.totalCircles)) - (this.radarScreenBorderWidth * 2), this.radarY, 0x004400);
-        */
-
-        /*
-        // ##### this.circleRadius = 30
-        // Dynamic
-        // Left Diagonal
-        this.leftDiagonal = this.add.line(0, 0, this.radarX, this.radarY, this.radarX + this.triangleLength * 2 - (7.5 + (16.5 * this.totalCircles)) - (this.radarScreenBorderWidth * 2), this.radarY + ((43.5 * this.totalCircles) - 7.5), 0x004400);
-
-        // Right Diagonal
-        this.rightDiagonal = this.add.line(0, 0, this.radarX, this.radarY + ((43.5 * this.totalCircles) - 7.5), this.radarX + this.triangleLength * 2 - (7.5 + (16.5 * this.totalCircles)) - (this.radarScreenBorderWidth * 2), this.radarY, 0x004400);
-        */
-
-        /*
-        // 1 circle
-        // Left Diagonal
-        this.leftDiagonal = this.add.line(0, 0, this.radarX, this.radarY, this.radarX + this.triangleLength * 2 - 24 - (this.radarScreenBorderWidth * 2), this.radarY + 36, 0x004400);
-
-        // Right Diagonal
-        this.rightDiagonal = this.add.line(0, 0, this.radarX, this.radarY + 36, this.radarX + this.triangleLength * 2 - 24 - (this.radarScreenBorderWidth * 2), this.radarY, 0x004400);
-        */
-
-        /*
-        // 2 circles
-        // Left Diagonal
-        this.leftDiagonal = this.add.line(0, 0, this.radarX, this.radarY, this.radarX + this.triangleLength * 2 - 40.5 - (this.radarScreenBorderWidth * 2), this.radarY + 79.5, 0x004400);
-
-        // Right Diagonal
-        this.rightDiagonal = this.add.line(0, 0, this.radarX, this.radarY + 79.5, this.radarX + this.triangleLength * 2 - 40.5 - (this.radarScreenBorderWidth * 2), this.radarY, 0x004400);
-        */
-
-        /*
-        // 5 circles
-        // Left Diagonal
-        this.leftDiagonal = this.add.line(0, 0, this.radarX, this.radarY, this.radarX + this.triangleLength * 2 - 90 - (this.radarScreenBorderWidth * 2), this.radarY + 210, 0x004400);
-
-        // Right Diagonal
-        this.rightDiagonal = this.add.line(0, 0, this.radarX, this.radarY + 210, this.radarX + this.triangleLength * 2 - 90 - (this.radarScreenBorderWidth * 2), this.radarY, 0x004400);
-        */
-
-        /*
-        // 6 circles
-        // Left Diagonal
-        this.leftDiagonal = this.add.line(0, 0, this.radarX, this.radarY, this.radarX + (this.triangleLength * 2) - (this.radarScreenBorderWidth * 2) - 106.5, this.radarY + 253.5, 0x004400);
-
-        // Right Diagonal
-        this.rightDiagonal = this.add.line(0, 0, this.radarX, this.radarY + 253.5, this.radarX + this.triangleLength * 2 - 106.5 - (this.radarScreenBorderWidth * 2), this.radarY, 0x004400);
-        */
-
-        /*
-        // 7 circles
-        // Left Diagonal
-        this.leftDiagonal = this.add.line(0, 0, this.radarX, this.radarY, this.radarX + (this.triangleLength * 2) - (this.radarScreenBorderWidth * 2) - 123, this.radarY + 297, 0x004400);
-
-        // Right Diagonal
-        this.rightDiagonal = this.add.line(0, 0, this.radarX, this.radarY + 297, this.radarX + this.triangleLength * 2 - 123 - (this.radarScreenBorderWidth * 2), this.radarY, 0x004400);
-        */
-
-
-
         // Test Left Diagonal - (Uncomment one of the below lines and test the diagonal manually)
         //this.ld1 = this.add.triangle(this.radarX, this.radarY, 150, 150, 150, 0, 0, 0, 0x00fb00);
         //this.ld2 = this.add.triangle(this.radarX, this.radarY, 150, 150, 0, 150, 0, 0, 0x00fb00);
