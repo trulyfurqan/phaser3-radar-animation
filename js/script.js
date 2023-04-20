@@ -24,8 +24,11 @@ class Radar1 extends Phaser.Scene
         this.totalCircleRadius = this.circleRadius * this.totalCircles;
         this.radarScreenBorderWidth = 10;
         this.triangleLength = this.totalCircleRadius + this.radarScreenBorderWidth;
+        this.triangleWidth = 100; // Number from 5 and UP works (Recommended: 100)
         this.radarRotationSpeed = 0.03;
         this.radarSignatureTimer = 2500;
+
+
 
         // Circles Functionality - start
         // radar screen border
@@ -43,6 +46,8 @@ class Radar1 extends Phaser.Scene
             this.totalCircleRadiusCopy = this.totalCircleRadiusCopy - this.circleRadius;
         }
         // Circles Functionality - end
+
+
 
         // Lines Functionality - start
         // Verticle Line
@@ -72,9 +77,8 @@ class Radar1 extends Phaser.Scene
 
         this.graphics = this.add.graphics({ lineStyle: { width: 4, color: 0x00fb00 }, fillStyle: { color: 0x00fb00 } });
         
-        //this.triangle = new Phaser.Geom.Triangle(this.radarX, this.radarY, this.radarX + this.triangleLength, this.radarY + 20, this.radarX + this.triangleLength, this.radarY - 20);
-        this.triangle = new Phaser.Geom.Triangle(this.radarX, this.radarY, this.radarX + this.triangleLength, this.radarY + 100, this.radarX + this.triangleLength, this.radarY - 100);
-
+        // This triangle acts like a Radar Signal / Rotating Light
+        this.triangle = new Phaser.Geom.Triangle(this.radarX, this.radarY, this.radarX + this.triangleLength, this.radarY + this.triangleWidth, this.radarX + this.triangleLength, this.radarY - this.triangleWidth);
 
         // Display a Dot in Center of Radar Screen
         this.point = this.add.circle(this.radarX, this.radarY, 2, 0x009900);
@@ -127,17 +131,13 @@ class Radar1 extends Phaser.Scene
     update()
     {
        this.graphics.clear();
-       Phaser.Geom.Triangle.RotateAroundPoint(this.triangle, this.point, this.radarRotationSpeed);
-       
-       //this.graphics.fillGradientStyle(0x00fb00, 0x00fb00, 0xffffff, 0xffffff, 0.5);
        this.graphics.fillGradientStyle(0x00fb00, 0x00fb00, 0x00fb00, 0x00fb00, 0.5);
-       //this.graphics.fillGradientStyle(0x00fb00, 0x00fb00, 0x000000, 0x000000, 0.4);
-
-       //this.graphics.strokeTriangleShape(this.triangle);
        this.graphics.fillTriangleShape(this.triangle);
 
-       //this.graphics.fillPointShape(this.point, 5);
+       Phaser.Geom.Triangle.RotateAroundPoint(this.triangle, this.point, this.radarRotationSpeed);
        
+
+
        // Enemies Radar Signature - start
         for(var i = 0; i < this.enemies.length; i++)
         {
@@ -151,7 +151,7 @@ class Radar1 extends Phaser.Scene
        // Enemies Radar Signature - end
 
 
-
+       
        // Friendly Radar Signature - start
        for(var i = 0; i < this.friendlies.length; i++)
        {
