@@ -126,6 +126,19 @@ class Radar1 extends Phaser.Scene
             this.friendlies[i].visible = false;
         }
         // Friendly Radar Signature - end
+
+
+
+        // Mask Functionality - start
+        // For debugging, use `true` so you can see it.
+        this.graphicsForMask = this.make.graphics({ fillStyle: { color: 0xffffff, alpha: 0.5 } }, false);
+        
+        this.graphicsForMask.fillCircle(this.radarX, this.radarY, this.totalCircleRadius);
+
+        this.mask = this.graphicsForMask.createGeometryMask();
+        
+        this.graphics.setMask(this.mask);
+        // Mask Functionality - end
     }
 
     update()
